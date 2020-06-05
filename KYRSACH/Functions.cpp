@@ -8,9 +8,13 @@
 	отметка об оплате
 	сумма задолженность за лечение
 */
+
+string sN = "\n\n\n\n\n\n\n\n\n";
+string sT = "\t\t\t\t ";
 void DataEntry(Data* (&d), int& n)
 {
-	cout << "Введите кол-во данных: ";
+	cout << sN;
+	cout << sT << "Введите кол-во данных: ";
 	cin >> n;
 
 	// Выделяю память
@@ -18,25 +22,30 @@ void DataEntry(Data* (&d), int& n)
 
 	for (int i = 0; i < n; i++)
 	{
-		cout << "Введите ФИО: ";
+		
+		cout << sT << "Введите ФИО: ";
 		cin >> d[i]._fio.surname >> d[i]._fio.name >> d[i]._fio.patronomic;
 	
-		cout << "Введите номер учетной карточки: ";
+	
+		cout << sT << "Введите номер учетной карточки: ";
 		cin >> d[i]._info._accountNumber;
 
-		cout << "Введите вид работы (Пломбировани,протезирование и тд.): ";
+		cout << sT << "Введите вид работы (Пломбировани,протезирование и тд.): ";
 		cin >> d[i]._info._typeofwork;
 
-		cout << "Введите стоимость работы: ";
+
+		cout << sT << "Введите стоимость работы: ";
 		cin >> d[i]._info._costofwork;
 		
-		cout << "Введите отметку об оплате (Оплачено/Не оплачено): ";
+		
+		cout << sT << "Введите отметку об оплате (Оплачено/Не оплачено): ";
 		cin >> d[i]._info._paymentmark;
 
-		cout << "Введите сумму задолжности: ";
+		
+		cout << sT << "Введите сумму задолжности: ";
 		cin >> d[i]._info._zadoljnost;
 
-		cout << "________________________________________________________ ";
+		cout << "________________________________________________________ " << endl;;
 	}
 }
 
@@ -63,11 +72,11 @@ void ReadingData(Data* (&d), int& n, string fileName)
 			reading >> d[i]._info._paymentmark;
 			reading >> d[i]._info._zadoljnost;
 		}
-
-		cout << "Данные считаны!!!" << endl;
+	
+		cout <<sT<< "Данные считаны!!!" << endl;
 	}
 	else
-		cout << "Ошибка открытия файла!!!" <<endl;
+		cout << sT << "Ошибка открытия файла!!!" <<endl;
 
 	reading.close();
 }
@@ -76,14 +85,15 @@ void Print(Data* d, int n)
 {
 	for (int i = 0; i < n; i++)
 	{
-		cout << "Данные #" << i + 1 << ": " << endl;
+		cout << sN;
+		cout << sT << "Данные #" << i + 1 << ": " << endl;
 		
-		cout << "ФИО: " << d[i]._fio.surname << " " << d[i]._fio.name << " " << d[i]._fio.patronomic << endl;
-		cout << "Номер учетной карточки: " << d[i]._info._accountNumber << endl;
-		cout << "Вид работы: " << d[i]._info._typeofwork << endl;
-		cout << "Стоимость работы: " << d[i]._info._costofwork << endl;
-		cout << "Отметка об оплате: " << d[i]._info._paymentmark << endl;
-		cout << "Сумма задолжности за лечение: " << d[i]._info._zadoljnost << endl;
+		cout<< sT<< "ФИО: " << d[i]._fio.surname << " " << d[i]._fio.name << " " << d[i]._fio.patronomic << endl;
+		cout<< sT<< "Номер учетной карточки: " << d[i]._info._accountNumber << endl;
+		cout<< sT<< "Вид работы: " << d[i]._info._typeofwork << endl;
+		cout<< sT<< "Стоимость работы: " << d[i]._info._costofwork << endl;
+		cout<< sT<< "Отметка об оплате: " << d[i]._info._paymentmark << endl;
+		cout<< sT<< "Сумма задолжности за лечение: " << d[i]._info._zadoljnost << endl;
 
 		cout << "_____________________________________________________________________" << endl;
 
@@ -93,7 +103,9 @@ void Print(Data* d, int n)
 void DataChange(Data* (&d), int n)
 {
 	int _n;
-	cout << "Введите номер элемента (от 1 до " << n << "): ";
+
+	cout << sN;
+	cout << sT << "Введите номер элемента (от 1 до " << n << "): ";
 	cin >> _n;
 	_n--;
 
@@ -132,7 +144,8 @@ void DataChange(Data* (&d), int n)
 void DeleteData(Data* (&d), int& n)
 {
 	int _n;
-	cout << "Введите номер элемента (от 1 до " << n << "): ";
+	cout << sN;
+	cout << sT << "Введите номер элемента (от 1 до " << n << "): ";
 	cin >> _n;
 	_n--;
 
@@ -206,22 +219,23 @@ void AddData(Data* (&d), int &n)
 
 	Copy(d, buf, --n); // Возвращение данных
 
-	cout << "Введите ФИО: ";
+	cout << sN;
+	cout << sT << "Введите ФИО: ";
 	cin >> d[n]._fio.surname >> d[n]._fio.name >> d[n]._fio.patronomic;
 
-	cout << "Введите номер учетной карточки: ";
+	cout << sT << "Введите номер учетной карточки: ";
 	cin >> d[n]._info._accountNumber;
 
-	cout << "Введите вид работы (Пломбировани,протезирование и тд.): ";
+	cout << sT << "Введите вид работы (Пломбировани,протезирование и тд.): ";
 	cin >> d[n]._info._typeofwork;
 
-	cout << "Введите стоимость работы: ";
+	cout << sT << "Введите стоимость работы: ";
 	cin >> d[n]._info._costofwork;
 
-	cout << "Введите отметку об оплате (Оплачено/Не оплачено): ";
+	cout << sT << "Введите отметку об оплате (Оплачено/Не оплачено): ";
 	cin >> d[n]._info._paymentmark;
 
-	cout << "Введите сумму задолжности: ";
+	cout << sT << "Введите сумму задолжности: ";
 	cin >> d[n]._info._zadoljnost;
 
 	system("cls");
@@ -249,8 +263,8 @@ void DataSorting(Data *d, int n)
 			}
 		}
 	}
-
-	cout << "Данные отсортированны!!!" << endl;
+	cout << sN;
+	cout << sT << "Данные отсортированны!!!" << endl;
 }
 
 void SavingData(Data* d, int n, string fileName)

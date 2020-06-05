@@ -2,22 +2,58 @@
 
 int _stateMenu;
 
+string spaceN =  "\n\n\n\n\n\n\n\n\n";
+string spaceT = "\t\t\t\t ";
 
 void MENU()
 {
+	system("mode con cols=90 lines=40");
 
-	cout << "Выберите Действие: " << endl;
-	cout << "(1) Ввод данных" << endl;
-	cout << "(2) Вывод данных" << endl;
-	cout << "(3) Изменение" << endl;
-	cout << "(4) Удаление" << endl;
-	cout << "(5) Добавление" << endl;
-	cout << "(6) Сортировка" << endl;
-	cout << "(7) Сохранение" << endl;
-	cout << "(0) Выход из программы" << endl;
-	cout << "Ваш выбор: ";
-		cin >> _stateMenu;
-}
+	int pass;
+	bool Pass = true;
+
+	cout << spaceN;
+	cout << spaceT  << "Введите пароль:" << endl;
+	cout << spaceT << "Пароль - ";
+	cin >> pass;
+
+	 
+
+	while (Pass == true)
+	{
+		if (pass == 12345)
+		{
+			bool passOk = true;
+			Pass = false;
+			system("cls");
+			cout << spaceN;
+			cout <<spaceT<< "Выберите Действие: " << endl;
+			cout <<spaceT<< "(1) Ввод данных" << endl;
+			cout <<spaceT<< "(2) Вывод данных" << endl;
+			cout <<spaceT<< "(3) Изменение" << endl;
+			cout <<spaceT<< "(4) Удаление" << endl;
+			cout <<spaceT<< "(5) Добавление" << endl;
+			cout <<spaceT<< "(6) Сортировка" << endl;
+			cout <<spaceT<< "(7) Сохранение" << endl;
+			cout <<spaceT<< "(0) Выход из программы" << endl;
+			cout <<spaceT<< "Ваш выбор: ";
+			cin >> _stateMenu;
+		}
+		else
+		{
+			system("cls");
+			cout << spaceN;
+			cout << spaceT << "Введен не правильный пароль. " << endl;
+			cout << spaceT <<"Пароль - ";
+			cin >> pass;
+		}
+	}
+		
+	}
+	
+	
+
+
 
 
 void main()
@@ -43,24 +79,45 @@ void main()
 		{
 		case 1:
 			system("cls");
-
-			cout << "Ввод вручную или из файла?: ";
+			cout << spaceN;
+			cout <<spaceT<< "Ввод вручную или из файла?: " << endl;
+			cout <<spaceT<< "Ввод вручную - 1 " << endl;
+			cout <<spaceT<< "Ввод из файла - 2 " << endl;
 			cin >> _actions;
 
 			system("cls");
+
+
+			
 
 			if (_actions == 1)
 			{
 				DataEntry(d, amountOfData);
 			}
-			else
+			else if (_actions == 2)
 			{
-
-				cout << "Введите название файла: ";
+				cout << spaceN;
+				cout << spaceT << "Введите название файла: ";
 				cin >> fileName;
 
 				ReadingData(d, amountOfData, fileName);
 			}
+			else
+			{
+				
+					system("cls");
+					cout << spaceN;
+					cout << spaceT << "Не введен номер действия!" << endl;;
+
+					cout << spaceT << "Ввод вручную или из файла?: " << endl;
+					cout << spaceT << "Ввод вручную - 1 " << endl;
+					cout << spaceT << "Ввод из файла - 2 " << endl;
+					cin >> _actions;
+
+					system("cls");
+
+			}
+
 
 			system("pause");
 			system("cls");
@@ -75,7 +132,8 @@ void main()
 				Print(d, amountOfData);
 			}
 			else
-				cout << "Данные пусты!!!" << endl;
+				cout << spaceN;
+				cout << spaceT << "Данные пусты!!!" << endl;
 
 			system("pause");
 			system("cls");
@@ -90,7 +148,8 @@ void main()
 				DataChange(d, amountOfData);
 			}
 			else
-				cout << "Данные пусты!!!" << endl;
+				cout << spaceN;
+			cout << spaceT << "Данные пусты!!!" << endl;
 
 			system("pause");
 			system("cls");
@@ -105,7 +164,8 @@ void main()
 				DeleteData(d, amountOfData);
 			}
 			else
-				cout << "Данные пусты!!!" << endl;
+				cout << spaceN;
+			cout << spaceT << "Данные пусты!!!" << endl;
 
 			system("pause");
 			system("cls");
@@ -121,7 +181,8 @@ void main()
 				amountOfData++;
 			}
 			else
-				cout << "Данные пусты!!!" << endl;
+				cout << spaceN;
+			cout << spaceT << "Данные пусты!!!" << endl;
 
 			system("pause");
 			system("cls");
@@ -137,7 +198,8 @@ void main()
 
 			}
 			else
-				cout << "Данные пусты!!!" << endl;
+				cout << spaceN;
+			cout << spaceT << "Данные пусты!!!" << endl;
 
 			system("pause");
 			system("cls");
@@ -146,8 +208,8 @@ void main()
 			//////////////////////////////////////////////////
 		case 7:
 			system("cls");
-
-			cout << "Введите название файла: ";
+			cout << spaceN;
+			cout << spaceT << "Введите название файла: ";
 			cin >> fileName;
 
 			if (amountOfData != 0)
@@ -156,7 +218,8 @@ void main()
 
 			}
 			else
-				cout << "Данные пусты!!!" << endl;
+				cout << spaceN;
+			cout << spaceT << "Данные пусты!!!" << endl;
 
 			system("pause");
 			system("cls");
@@ -164,12 +227,14 @@ void main()
 			break;
 			//////////////////////////////////////////////////
 		default:
-			cout << "Не введен номер действия!!!" << endl;
+			cout << spaceN;
+			cout << spaceT << "Не введен номер действия!!!" << endl;
 			system("pause");
 			system("cls");
 			MENU();
 			break;
 		}
+
 	}
 
 }

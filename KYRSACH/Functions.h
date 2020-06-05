@@ -4,9 +4,9 @@
 #include <fstream>   // Для работы с файлами
 #include <string>    // Для работы с строками
 #include <Windows.h> // Для работы с функциями системы
+#include <conio.h>
 
 using namespace std;
-
 
 /* 
 	ФИО
@@ -28,12 +28,12 @@ struct FIO  // Структура ФИО
 
 struct Info // Структура доп.данных
 {
-	int	_accountNumber,
+	string	_accountNumber,
 		_costofwork,
 		_zadoljnost;
 
 	string _typeofwork,
-		_paymentmark;
+		   _paymentmark;
 };
 
 struct Data
